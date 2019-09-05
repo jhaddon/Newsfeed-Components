@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Student of the Month is Joseph Haddon',
+    date: 'Sept 4th, 2019',
+    firstParagraph: `Bacon ipsum dolor amet jowl cupim bresaola kielbasa turkey. Ground round salami rump shank ball tip capicola. Cow chicken ham, shankle hamburger pastrami buffalo jowl tongue shank cupim pork. Pig pork chop tongue capicola. `,
+
+    secondParagraph: `Hamburger ground round swine venison sirloin spare ribs picanha chuck landjaeger jowl corned beef chicken. Pancetta ground round kielbasa, brisket cupim short ribs venison kevin flank beef turducken ham meatball salami. Cow ham capicola, bacon beef pig venison kevin. Sausage boudin swine shankle tri-tip.`,
+
+    thirdParagraph: `Alcatra jerky ribeye capicola. Tenderloin pig brisket turducken shank sausage bacon chicken hamburger beef ribs jowl filet mignon meatball. Leberkas burgdoggen sirloin corned beef swine drumstick. Bacon short ribs andouille pancetta, fatback porchetta hamburger sausage meatloaf rump doner meatball pastrami pork loin. Ground round t-bone alcatra filet mignon capicola. Jowl pig chicken, doner hamburger alcatra turducken buffalo turkey sirloin drumstick beef ribs.`
   }
 ];
 
@@ -102,13 +111,59 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
-
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-
-  Step 3: return the entire component.
-
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-
 */
+
+const articles = document.querySelector('.articles')
+data.forEach(data => {
+  console.log('creating panel', data.title)
+  articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+})
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const paragraphOne = document.createElement('p');
+  const paragraphTwo = document.createElement('p');
+  const paragraphThree = document.createElement('p');
+  const button = document.createElement('span');
+
+  // setup structure
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(paragraphOne);
+  article.appendChild(paragraphTwo);
+  article.appendChild(paragraphThree);
+  article.appendChild(button);
+
+  // set class names
+
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  button.classList.add('expandButton');
+
+  // set text content
+
+  articleTitle.textContent = title
+  articleDate.textContent = date
+  paragraphOne.textContent = firstParagraph
+  paragraphTwo.textContent = secondParagraph
+  paragraphThree.textContent = thirdParagraph
+
+  // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+
+  articleTitle.addEventListener('click', (e) => {
+    article.classList.toggle('article-open')
+  })
+
+  //Step 3: return the entire component.
+  
+  return article
+}
+
+
+
+  // Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+
+  // Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
