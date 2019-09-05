@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Student of the Month is Joseph Haddon',
+    date: 'Sept 4th, 2019',
+    firstParagraph: `Bacon ipsum dolor amet jowl cupim bresaola kielbasa turkey. Ground round salami rump shank ball tip capicola. Cow chicken ham, shankle hamburger pastrami buffalo jowl tongue shank cupim pork. Pig pork chop tongue capicola. `,
+
+    secondParagraph: `Hamburger ground round swine venison sirloin spare ribs picanha chuck landjaeger jowl corned beef chicken. Pancetta ground round kielbasa, brisket cupim short ribs venison kevin flank beef turducken ham meatball salami. Cow ham capicola, bacon beef pig venison kevin. Sausage boudin swine shankle tri-tip.`,
+
+    thirdParagraph: `Alcatra jerky ribeye capicola. Tenderloin pig brisket turducken shank sausage bacon chicken hamburger beef ribs jowl filet mignon meatball. Leberkas burgdoggen sirloin corned beef swine drumstick. Bacon short ribs andouille pancetta, fatback porchetta hamburger sausage meatloaf rump doner meatball pastrami pork loin. Ground round t-bone alcatra filet mignon capicola. Jowl pig chicken, doner hamburger alcatra turducken buffalo turkey sirloin drumstick beef ribs.`
   }
 ];
 
@@ -144,13 +153,8 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
 
   // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
-  button.addEventListener('click', (e) => {
-    console.log('button clicked', e.target)
-    // 1. toggle hide-btn on BOTH buttons
+  articleTitle.addEventListener('click', (e) => {
     article.classList.toggle('article-open')
-    // buttonClose.classList.toggle('hide-btn')
-    // 2. Change visibility of the content w/ 'toggle-on'
-    // panelContent.classList.toggle('toggle-on')
   })
 
   //Step 3: return the entire component.
